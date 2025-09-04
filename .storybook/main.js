@@ -30,7 +30,11 @@ export default {
       rollupOptions: {
         ...(config.build?.rollupOptions || {}),
         external: Array.isArray(external)
-          ? [...external]
+          ? [
+              ...external,
+              '@storybook/react/dist/entry-preview.mjs',
+              '@storybook/react/dist/entry-preview-docs.mjs',
+            ]
           : external,
       },
     };

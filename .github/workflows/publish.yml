@@ -3,7 +3,7 @@ name: Publish to GitHub Packages
 on:
   push:
     tags:
-      - 'v*.*.*'
+    - 'v*.*.*'
 
 permissions:
   contents: read
@@ -13,17 +13,26 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@caamanol'
-      - run: npm ci
-      - name: Run unit tests
-        run: npm test
-      - name: Build library
-        run: npm run build
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@caamanol'
+
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v3
+      with:
+        version: 9
+
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+
+    - name: Run unit tests
+      run: pnpm test
+
+    - name: Build library
+      run: pnpm build
+    - run: pnpm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
