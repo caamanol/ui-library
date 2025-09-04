@@ -1,0 +1,28 @@
+# Node
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+storybook-static/
+
+# Env
+.env
+.env.*
+
+# Mac
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Test coverage
+coverage/
+
+# Local caches
+.cache/
+

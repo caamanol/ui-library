@@ -1,0 +1,63 @@
+{
+  "name": "@caamanol/ui-library",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test": "vitest run --reporter=dot",
+    "test:watch": "vitest"
+  },
+  "main": "dist/opendev-ui.cjs.js",
+  "module": "dist/opendev-ui.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/opendev-ui.es.js",
+      "require": "./dist/opendev-ui.cjs.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.2",
+    "@mui/material": "^7.3.2",
+    "@storybook/addon-essentials": "8.6.14",
+    "@storybook/react-vite": "8.6.14",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@vitejs/plugin-react": "^4.3.1",
+    "jsdom": "^26.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storybook": "8.6.14",
+    "vite": "^5.4.1",
+    "vitest": "^3.2.4"
+  },
+  "peerDependencies": {
+    "@emotion/react": ">=11",
+    "@emotion/styled": ">=11",
+    "@mui/icons-material": ">=7",
+    "@mui/material": ">=7",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caamanol/ui-library.git"
+  },
+  "homepage": "https://github.com/caamanol/ui-library",
+  "bugs": {
+    "url": "https://github.com/caamanol/ui-library/issues"
+  }
+}
