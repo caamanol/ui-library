@@ -34,7 +34,7 @@ jobs:
       run: pnpm test
 
     - name: Build Storybook
-      run: npm run build-storybook
+      run: pnpm build-storybook
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
