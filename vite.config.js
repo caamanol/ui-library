@@ -2,8 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig(({ command, mode }) => {
-  const isStorybook = Boolean(process.env.STORYBOOK);
-  const libBuild = !isStorybook; // Avoid library mode when Storybook builds
+  // Enable library build only when explicitly requested
+  const libBuild = Boolean(process.env.LIB_BUILD);
 
   return {
     plugins: [react()],
