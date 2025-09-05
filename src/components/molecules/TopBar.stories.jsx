@@ -1,5 +1,6 @@
 import React from 'react';
 import TopBar from './TopBar.jsx';
+import Logo from '../../assets/CHEQUEMATE.png';
 
 export default {
   title: 'Molecules/TopBar',
@@ -14,3 +15,11 @@ export const Default = {
   },
 };
 
+export const WithLogo = {
+  args: {
+    brand: 'Chequemate',
+    userEmail: 'lucas@opendev.tools',
+    logoSrc: Logo,
+    logoAlt: 'Chequemate',
+  },
+};

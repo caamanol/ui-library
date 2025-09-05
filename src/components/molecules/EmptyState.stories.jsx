@@ -1,5 +1,6 @@
 import React from 'react';
 import EmptyState from './EmptyState.jsx';
+import Logo from '../../assets/CHEQUEMATE.png';
 
 export default {
   title: 'Molecules/EmptyState',
@@ -15,3 +16,13 @@ export const Basic = {
   },
 };
 
+export const PromoCard = {
+  args: {
+    iconSrc: Logo,
+    iconAlt: 'Pieza de ajedrez',
+    category: 'Automatización',
+    title: 'ChequeMate IA',
+    description: 'Digitalizá cheques en segundos con IA y OCR. Más velocidad, menos errores y control total de la información.',
+    badge: { label: 'NUEVO', color: 'success' },
+  },
+};

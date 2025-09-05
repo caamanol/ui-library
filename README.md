@@ -443,6 +443,9 @@ function Filtro() {
 | brandColorClass | string     | Clase opcional para ícono |
 | onBrandClick  | function()   | Click en marca |
 | onAvatarClick | function()   | Click en avatar |
+| logoSrc       | string       | URL/asset del logo (PNG/SVG) |
+| logoAlt       | string       | Texto alternativo del logo |
+| logoSize      | number       | Tamaño del logo (px, default 24) |
 
 ### Toast
 | Prop      | Tipo    | Descripción |
@@ -464,4 +467,3 @@ Recursos: https://mui.com/material-ui/guides/server-rendering/
 - El package exporta ESM (`dist/opendev-ui.es.js`) y CJS (`dist/opendev-ui.cjs.js`).
 - Bundlers modernos harán tree-shaking del ESM automáticamente.
 - Evitá imports profundos; importá desde `@caamanol/ui-library`.
-
