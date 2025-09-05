@@ -7,24 +7,37 @@ import Avatar from '../atoms/Avatar.jsx';
 
 export default function TopBar({
   brand = 'opendevUI',
+  title,
   brandColorClass = '',
   userEmail = 'usuario@example.com',
   onBrandClick,
   onAvatarClick,
   logoSrc,
   logoAlt,
-  logoSize = 24,
+  logoSize, // deprecated, kept for backward compatibility
+  logoHeight = 32,
+  toolbarVariant = 'regular', // 'dense' | 'regular'
+  disableGutters = false,
 }) {
+  // Back-compat: if logoSize was provided, use it as height
+  const effectiveLogoHeight = typeof logoSize === 'number' ? logoSize : logoHeight;
+  const brandLabel = title || brand;
   return (
     <AppBar position="static" color="default" sx={{ bgcolor: 'background.paper' }}>
-      <Toolbar>
+      <Toolbar variant={toolbarVariant} disableGutters={disableGutters}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexGrow: 1 }}>
           {logoSrc ? (
             <Box
               component="img"
               src={logoSrc}
-              alt={logoAlt || brand}
-              sx={{ width: logoSize, height: logoSize, objectFit: 'contain', cursor: onBrandClick ? 'pointer' : 'default' }}
+              alt={logoAlt || brandLabel}
+              sx={{
+                height: effectiveLogoHeight,
+                width: 'auto',
+                objectFit: 'contain',
+                cursor: onBrandClick ? 'pointer' : 'default',
+                mr: 1,
+              }}
               onClick={onBrandClick}
               aria-label="brand"
               role={onBrandClick ? 'button' : undefined}
@@ -32,13 +45,17 @@ export default function TopBar({
           ) : (
             <Box
               className={brandColorClass}
-              sx={{ width: logoSize, height: logoSize, borderRadius: 0.5, bgcolor: 'primary.main', cursor: onBrandClick ? 'pointer' : 'default' }}
+              sx={{ width: effectiveLogoHeight, height: effectiveLogoHeight, borderRadius: 0.5, bgcolor: 'primary.main', cursor: onBrandClick ? 'pointer' : 'default' }}
               onClick={onBrandClick}
               aria-label="brand"
               role={onBrandClick ? 'button' : undefined}
             />
           )}
-          <Typography variant="h6" onClick={onBrandClick} sx={{ cursor: onBrandClick ? 'pointer' : 'default' }}>{brand}</Typography>
+          {brandLabel ? (
+            <Typography variant="h6" onClick={onBrandClick} sx={{ cursor: onBrandClick ? 'pointer' : 'default' }}>
+              {brandLabel}
+            </Typography>
+          ) : null}
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <Typography variant="body2" color="text.secondary">{userEmail}</Typography>
