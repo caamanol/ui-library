@@ -18,6 +18,10 @@ export default function TopBar({
   logoHeight = 32,
   toolbarVariant = 'regular', // 'dense' | 'regular'
   disableGutters = false,
+  rightContent,
+  children,
+  actions,
+  actionsPosition = 'right', // 'left' | 'right'
 }) {
   // Back-compat: if logoSize was provided, use it as height
   const effectiveLogoHeight = typeof logoSize === 'number' ? logoSize : logoHeight;
@@ -56,12 +60,28 @@ export default function TopBar({
               {brandLabel}
             </Typography>
           ) : null}
+          {actionsPosition === 'left' && actions ? (
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, ml: 2 }}>
+              {actions}
+            </Box>
+          ) : null}
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Typography variant="body2" color="text.secondary">{userEmail}</Typography>
-          <span onClick={onAvatarClick} role={onAvatarClick ? 'button' : undefined} aria-label={onAvatarClick ? 'avatar' : undefined} style={{ cursor: onAvatarClick ? 'pointer' : 'default' }}>
-            <Avatar label={userEmail} />
-          </span>
+          {actionsPosition === 'right' && actions ? (
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mr: 1 }}>
+              {actions}
+            </Box>
+          ) : null}
+          {rightContent}
+          {children}
+          {userEmail ? (
+            <>
+              <Typography variant="body2" color="text.secondary">{userEmail}</Typography>
+              <span onClick={onAvatarClick} role={onAvatarClick ? 'button' : undefined} aria-label={onAvatarClick ? 'avatar' : undefined} style={{ cursor: onAvatarClick ? 'pointer' : 'default' }}>
+                <Avatar label={userEmail} />
+              </span>
+            </>
+          ) : null}
         </Box>
       </Toolbar>
     </AppBar>

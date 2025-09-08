@@ -439,13 +439,20 @@ function Filtro() {
 | Prop          | Tipo         | Descripción |
 |---------------|--------------|-------------|
 | brand         | string       | Nombre de marca |
+| title         | string       | Alternativa a `brand` para el texto |
 | userEmail     | string       | Email del usuario |
 | brandColorClass | string     | Clase opcional para ícono |
 | onBrandClick  | function()   | Click en marca |
 | onAvatarClick | function()   | Click en avatar |
 | logoSrc       | string       | URL/asset del logo (PNG/SVG) |
 | logoAlt       | string       | Texto alternativo del logo |
-| logoSize      | number       | Tamaño del logo (px, default 24) |
+| logoHeight    | number       | Altura del logo (px, default 32). Ancho se ajusta automático |
+| toolbarVariant| 'regular'|'dense' | Altura del Toolbar |
+| disableGutters| boolean      | Quita paddings laterales del Toolbar |
+| actions       | ReactNode    | Acciones (botones/links) |
+| actionsPosition | 'left'|'right' | Dónde renderizar `actions` (default 'right') |
+| rightContent  | ReactNode    | Contenido extra en el extremo derecho (compat) |
+| children      | ReactNode    | Alias extra en el extremo derecho (compat) |
 
 ### Toast
 | Prop      | Tipo    | Descripción |
