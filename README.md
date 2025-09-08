@@ -68,7 +68,7 @@ createRoot(document.getElementById('root')).render(<App />)
 Todos desde `@caamanol/ui-library`:
 
 - Átomos: `Avatar`, `Badge`, `Button`, `Card`, `Checkbox`, `Divider`, `HelperText`, `IconButton`, `Input`, `Label`, `Radio`, `Select`, `Spinner`, `Switch`, `Textarea`
-- Moléculas: `FormField`, `Toolbar`, `SearchBar`, `Breadcrumbs`, `Pagination`, `Toast`, `TopBar`, `MetricCard`, `EmptyState`, `Modal`, `DataTable`
+- Moléculas: `FormField`, `Toolbar`, `SearchBar`, `Breadcrumbs`, `Pagination`, `Toast`, `TopBar`, `MetricCard`, `EmptyState`, `Modal`, `DataTable`, `Sidebar`
 - Temas: `lightTheme`, `darkTheme`
 
 ### Ejemplos rápidos
@@ -118,6 +118,20 @@ const columns = [
   rows={[{ id: 'CH-0001', status: 'Pendiente' }]}
   onRowClick={(row) => console.log('Row:', row)}
 />
+```
+
+- Sidebar con filtro y cards
+```jsx
+import { Sidebar, SearchBar, Card } from '@caamanol/ui-library'
+
+<div style={{ height: 480, display: 'flex' }}>
+  <Sidebar filter={<SearchBar placeholder="Filtrar…" />}> 
+    <Card>Item 1</Card>
+    <Card>Item 2</Card>
+  </Sidebar>
+  <div style={{ flex: 1 }} />
+  {/* contenido principal */}
+</div>
 ```
 
 ---
@@ -218,6 +232,13 @@ Esta sección resume props clave. Todos aceptan props adicionales de MUI (via el
   - `emptyText`: texto para tabla vacía
   - `onRowClick(row)`: callback al clickear fila
   - `rowKey`: nombre de la key en `row` (default `'id'`)
+
+- Sidebar
+  - `filter`: nodo o componente a renderizar en el encabezado (p.ej. `SearchBar`)
+  - `children`: contenido a listar (p.ej. `Card`s)
+  - `width`: ancho del panel lateral (número en px o string CSS). Default `320`
+  - `sticky`: hace sticky el header al hacer scroll. Default `true`
+  - `headerPadding` / `contentPadding`: padding del header y del cuerpo
 
 - Pagination
   - `current`: página actual (1-based)

@@ -25,5 +25,6 @@ export { default as MetricCard } from '../components/molecules/MetricCard.jsx';
 export { default as EmptyState } from '../components/molecules/EmptyState.jsx';
 export { default as Modal } from '../components/molecules/Modal.jsx';
 export { default as DataTable } from '../components/molecules/DataTable.jsx';
+export { default as Sidebar } from '../components/molecules/Sidebar.jsx';
 
 export { lightTheme, darkTheme } from '../theme.js';
